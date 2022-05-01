@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import heladoContacto from "../images/heladoContacto.png";
 import emailjs from "@emailjs/browser";
+import ReCaptcha from "react-google-recaptcha";
 
 export default function Contacto() {
   const [isLargerThan400] = useMediaQuery("(min-width: 400px)");
@@ -161,7 +162,10 @@ export default function Contacto() {
                     _hover={{ borderColor: "primary" }}
                   ></Textarea>
                 </FormControl>
-                {/* Captcha */}
+                <ReCaptcha
+                  sitekey="6Lf1j7cfAAAAAJ6UKeDZzFDPnX6whg5fyBLGCDXy"
+                  render="explicit"
+                />
                 <Button
                   type="submit"
                   bgColor="fourth"
