@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Stack,
@@ -100,69 +101,77 @@ export default function Contacto() {
               DATOS PERSONALES
             </Heading>
             <form onSubmit={sendEmail}>
-              <FormControl isRequired>
-                <Input
-                  name="name"
-                  value={contact.name}
-                  onChange={handleContactChange}
-                  placeholder="Nombre y Apellido"
-                  borderColor="secondary"
+              <Stack spacing={2}>
+                <FormControl isRequired>
+                  <Input
+                    name="name"
+                    value={contact.name}
+                    onChange={handleContactChange}
+                    placeholder="Nombre y Apellido"
+                    borderColor="secondary"
+                    borderRadius="sm"
+                    _hover={{ borderColor: "primary" }}
+                  ></Input>
+                </FormControl>
+                <FormControl isRequired>
+                  <Input
+                    name="email"
+                    type="email"
+                    value={contact.email}
+                    onChange={handleContactChange}
+                    placeholder="Email"
+                    borderColor="secondary"
+                    borderRadius="sm"
+                    _hover={{ borderColor: "primary" }}
+                  ></Input>
+                </FormControl>
+                <FormControl isRequired>
+                  <Input
+                    name="phoneNumber"
+                    type="number"
+                    value={contact.phoneNumber}
+                    onChange={handleContactChange}
+                    placeholder="Telefono"
+                    borderColor="secondary"
+                    borderRadius="sm"
+                    _hover={{ borderColor: "primary" }}
+                  ></Input>
+                </FormControl>
+                <FormControl isRequired>
+                  <Input
+                    name="subject"
+                    value={contact.subject}
+                    onChange={handleContactChange}
+                    placeholder="Asunto"
+                    borderColor="secondary"
+                    borderRadius="sm"
+                    _hover={{ borderColor: "primary" }}
+                  ></Input>
+                </FormControl>
+                <FormControl isRequired>
+                  <Textarea
+                    name="message"
+                    value={contact.message}
+                    onChange={handleContactChange}
+                    placeholder="Mensaje"
+                    borderColor="secondary"
+                    borderRadius="sm"
+                    rows="4"
+                    resize="none"
+                    _hover={{ borderColor: "primary" }}
+                  ></Textarea>
+                </FormControl>
+                {/* Captcha */}
+                <Button
+                  type="submit"
+                  bgColor="fourth"
+                  color="white"
                   borderRadius="sm"
-                ></Input>
-              </FormControl>
-              <FormControl isRequired>
-                <Input
-                  name="email"
-                  type="email"
-                  value={contact.email}
-                  onChange={handleContactChange}
-                  placeholder="Email"
-                  borderColor="secondary"
-                  borderRadius="sm"
-                ></Input>
-              </FormControl>
-              <FormControl isRequired>
-                <Input
-                  name="phoneNumber"
-                  type="number"
-                  value={contact.phoneNumber}
-                  onChange={handleContactChange}
-                  placeholder="Telefono"
-                  borderColor="secondary"
-                  borderRadius="sm"
-                ></Input>
-              </FormControl>
-              <FormControl isRequired>
-                <Input
-                  name="subject"
-                  value={contact.subject}
-                  onChange={handleContactChange}
-                  placeholder="Asunto"
-                  borderColor="secondary"
-                  borderRadius="sm"
-                ></Input>
-              </FormControl>
-              <FormControl isRequired>
-                <Textarea
-                  name="message"
-                  value={contact.message}
-                  onChange={handleContactChange}
-                  placeholder="Mensaje"
-                  borderColor="secondary"
-                  borderRadius="sm"
-                  rows="4"
-                  resize="none"
-                ></Textarea>
-              </FormControl>
-              {/* Captcha */}
-              <Button
-                type="submit"
-                bgColor="fourth"
-                color="white"
-                borderRadius="sm"
-              >
-                Enviar
-              </Button>
+                  _hover={{ bgColor: "fifth" }}
+                >
+                  Enviar
+                </Button>
+              </Stack>
             </form>
           </Stack>
         </Stack>
