@@ -11,8 +11,10 @@ export const customTheme = extendTheme({
   },
   colors: {
     primary: "#38B2AC", //teal.400
-    secondary: "#81E6D9", //teal.200
-    tertiary: "#4FD1C5", //teal.300
+    secondary: "#156662", //darker teal
+    tertiary: "#69FFF7", //lighter teal
+    fourth: "#B36237", //brown
+    fifth: "#662A0B", //darker brown
   },
   Button: {
     baseStyle: {
