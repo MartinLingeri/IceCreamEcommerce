@@ -7,6 +7,7 @@ import HaceTuPedido from "../components/haceTuPedido";
 import PuntosDeVenta from "../components/puntosDeVenta";
 import Contacto from "../components/contacto";
 import Conocenos from "../components/conocenos";
+import PreguntasFrecuentes from "../components/preguntasFrecuentes";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/puntosDeVenta" exact element={<PuntosDeVenta />} />
           <Route path="/conocenos" exact element={<Conocenos />} />
           <Route path="/contacto" exact element={<Contacto />} />
+          <Route path="/preguntasFrecuentes" exact element={<PreguntasFrecuentes />} />
         </Routes>
         <Footer />
       </Flex>

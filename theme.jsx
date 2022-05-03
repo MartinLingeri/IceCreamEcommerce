@@ -15,6 +15,7 @@ export const customTheme = extendTheme({
     tertiary: "#69FFF7", //lighter teal
     fourth: "#B36237", //brown
     fifth: "#662A0B", //darker brown
+    warning: "#C53030", //red.600
   },
   Button: {
     baseStyle: {

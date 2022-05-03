@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Stack, Select, useRadioGroup } from "@chakra-ui/react";
 import RadioCard from "./radioCard";
 
-import { gustosDeHelado } from "../gustoDeHelado";
+import { gustosDeHelado } from "../gustosDeHelado";
 
 export default function HaceTuPedido() {
   const [pote, setPote] = useState("");

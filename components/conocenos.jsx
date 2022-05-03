@@ -14,7 +14,7 @@ import heladoChocolate from "../images/heladoChocolate.jpg";
 export default function Conocenos() {
   return (
     <Stack justifyContent="center" margin={{ base: 4, sm: 8 }} color="black">
-      <Heading color="tertiary">Conocenos</Heading>
+      <Heading color="secondary">Conocenos</Heading>
       <Heading color="fourth" textAlign="center" fontWeight="semibold">
         Descubri la historia del
       </Heading>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Box,
   Stack,
@@ -25,6 +25,8 @@ export default function Contacto() {
     message: "",
   });
   const toast = useToast();
+  const captcha = useRef(null);
+  const [captchaValido, setCaptchaValido] = useState(null);
 
   function handleContactChange(e) {
     const { name, value } = e.target;
@@ -36,43 +38,58 @@ export default function Contacto() {
     });
   }
 
+  function onChangeReCaptcha() {
+    console.log(captchaValido);
+    if (captcha.current.value()) {
+      setCaptchaValido(true);
+    }
+    else {
+      setCaptchaValido(false);
+    }
+  }
+
   function sendEmail(e) {
     e.preventDefault();
+    if (captchaValido) {
+      setCaptchaValido(true);
 
-    emailjs
-      .sendForm(
-        "service_portfolio",
-        "iceCreamEcommerce",
-        e.target,
-        "tNV-hywQiGXm8a7Wa"
-      )
-      .then((res) => {
-        setContact({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          subject: "",
-          message: "",
+      emailjs
+        .sendForm(
+          "service_portfolio",
+          "iceCreamEcommerce",
+          e.target,
+          "tNV-hywQiGXm8a7Wa"
+        )
+        .then((res) => {
+          setContact({
+            name: "",
+            email: "",
+            phoneNumber: "",
+            subject: "",
+            message: "",
+          });
+          toast({
+            title: "Consulta enviada",
+            description: "Su consulta ha sido enviada correctamente",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+          console.log(res);
+        })
+        .catch((err) => {
+          toast({
+            title: "Consulta NO enviada",
+            description: "Su consulta NO ha sido enviada, pruebe nuevamente",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+          console.log(err);
         });
-        toast({
-          title: "Consulta enviada",
-          description: "Su consulta ha sido enviada correctamente",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-        console.log(res);
-      })
-      .catch((err) => {
-        toast({
-          title: "Consulta NO enviada",
-          description: "Su consulta NO ha sido enviada, pruebe nuevamente",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-        console.log(err);
-      });
+    } else {
+      setCaptchaValido(false);
+    }
   }
 
   return (
@@ -102,7 +119,7 @@ export default function Contacto() {
               DATOS PERSONALES
             </Heading>
             <form onSubmit={sendEmail}>
-              <Stack spacing={2}>
+              <Stack spacing={2} justifyContent="center" alignItems="center">
                 <FormControl isRequired>
                   <Input
                     name="name"
@@ -130,6 +147,7 @@ export default function Contacto() {
                   <Input
                     name="phoneNumber"
                     type="number"
+                    pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im"
                     value={contact.phoneNumber}
                     onChange={handleContactChange}
                     placeholder="Telefono"
@@ -163,14 +181,20 @@ export default function Contacto() {
                   ></Textarea>
                 </FormControl>
                 <ReCaptcha
+                  ref={captcha}
                   sitekey="6Lf1j7cfAAAAAJ6UKeDZzFDPnX6whg5fyBLGCDXy"
                   render="explicit"
+                  onChange={onChangeReCaptcha}
                 />
+                {captchaValido === false && (
+                  <Box color="warning">Por favor acepta el captcha</Box>
+                )}
                 <Button
                   type="submit"
                   bgColor="fourth"
                   color="white"
                   borderRadius="sm"
+                  w="100%"
                   _hover={{ bgColor: "fifth" }}
                 >
                   Enviar
