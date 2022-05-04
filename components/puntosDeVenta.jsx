@@ -8,11 +8,10 @@ import {
   StackDivider,
   Button,
   AspectRatio,
-  Flex,
 } from "@chakra-ui/react";
+import { Link } from "react-scroll";
 
 import { locales } from "../locales";
-import { Link } from "react-router-dom";
 
 export default function PuntosDeVenta() {
   const [mapLink, setMapLink] = useState(
@@ -40,7 +39,11 @@ export default function PuntosDeVenta() {
         {locales.map((value, index) => {
           return (
             <Stack key={index} divider={<StackDivider />} spacing={2} w="100%">
-              <Heading color="fourth" fontSize={24} alignSelf={{base:"center", sm:"stretch"}}>
+              <Heading
+                color="fourth"
+                fontSize={24}
+                alignSelf={{ base: "center", sm: "stretch" }}
+              >
                 {value.provincia}
               </Heading>
               <Grid
@@ -77,9 +80,13 @@ export default function PuntosDeVenta() {
                           </Heading>
                         </Box>
                         <Button
+                          as={Link}
+                          to="mapa"
+                          smooth={true}
                           bgColor="primary"
                           color="white"
                           borderRadius="sm"
+                          cursor="pointer"
                           _hover={{ opacity: "0.7" }}
                           onClick={() => handleVerMapa(local.mapsLink)}
                         >
@@ -95,6 +102,7 @@ export default function PuntosDeVenta() {
         })}
         <Heading color="fifth">Mapa</Heading>
         <AspectRatio
+          id="mapa"
           maxW="900px"
           w="100%"
           minH="300px"
