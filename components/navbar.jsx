@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Stack, Link, Flex, Box } from "@chakra-ui/react";
+import { Stack, Link, Flex, Box, Image, Heading } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 
+import logoIcon from "../src/favicon.svg";
 import { IoMdClose as CloseIcon, IoMdMenu as MenuIcon } from "react-icons/io";
 
 export default function Navbar() {
@@ -18,8 +19,11 @@ export default function Navbar() {
         w="100%"
         p={8}
       >
-        <Link as={ReachLink} to="/" fontSize={28}>
-          Martollo
+        <Link as={ReachLink} to="/">
+          <Stack direction="row" spacing={0}>
+            <Image src={logoIcon} width={10}></Image>
+            <Heading fontSize={28}>Martollo</Heading>
+          </Stack>
         </Link>
         <Box display={{ base: "block", md: "none" }} onClick={toggle}>
           {isOpen ? <CloseIcon size={32} /> : <MenuIcon size={32} />}

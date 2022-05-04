@@ -126,9 +126,9 @@ export default function Contacto() {
                     value={contact.name}
                     onChange={handleContactChange}
                     placeholder="Nombre y Apellido"
-                    borderColor="secondary"
+                    borderColor="primary"
                     borderRadius="sm"
-                    _hover={{ borderColor: "primary" }}
+                    _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
                 <FormControl isRequired>
@@ -138,9 +138,9 @@ export default function Contacto() {
                     value={contact.email}
                     onChange={handleContactChange}
                     placeholder="Email"
-                    borderColor="secondary"
+                    borderColor="primary"
                     borderRadius="sm"
-                    _hover={{ borderColor: "primary" }}
+                    _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
                 <FormControl isRequired>
@@ -151,9 +151,9 @@ export default function Contacto() {
                     value={contact.phoneNumber}
                     onChange={handleContactChange}
                     placeholder="Telefono"
-                    borderColor="secondary"
+                    borderColor="primary"
                     borderRadius="sm"
-                    _hover={{ borderColor: "primary" }}
+                    _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
                 <FormControl isRequired>
@@ -162,9 +162,9 @@ export default function Contacto() {
                     value={contact.subject}
                     onChange={handleContactChange}
                     placeholder="Asunto"
-                    borderColor="secondary"
+                    borderColor="primary"
                     borderRadius="sm"
-                    _hover={{ borderColor: "primary" }}
+                    _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
                 <FormControl isRequired>
@@ -173,11 +173,11 @@ export default function Contacto() {
                     value={contact.message}
                     onChange={handleContactChange}
                     placeholder="Mensaje"
-                    borderColor="secondary"
+                    borderColor="primary"
                     borderRadius="sm"
                     rows="4"
                     resize="none"
-                    _hover={{ borderColor: "primary" }}
+                    _hover={{ borderColor: "secondary" }}
                   ></Textarea>
                 </FormControl>
                 <ReCaptcha
