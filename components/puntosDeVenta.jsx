@@ -61,7 +61,8 @@ export default function PuntosDeVenta() {
                       p={4}
                       border="1px"
                       borderColor="primary"
-                      borderRadius="sm"
+                      borderRadius="md"
+                      boxShadow="md"
                       color="fifth"
                     >
                       <Stack justifyContent="space-between" h="100%">
@@ -85,7 +86,8 @@ export default function PuntosDeVenta() {
                           smooth={true}
                           bgColor="primary"
                           color="white"
-                          borderRadius="sm"
+                          borderRadius="md"
+                          boxShadow="md"
                           cursor="pointer"
                           _hover={{ opacity: "0.7" }}
                           onClick={() => handleVerMapa(local.mapsLink)}
@@ -107,6 +109,7 @@ export default function PuntosDeVenta() {
           w="100%"
           minH="300px"
           ratio={{ base: 1, sm: 16 / 9 }}
+          boxShadow="md"
         >
           <iframe
             src={mapLink}

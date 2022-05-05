@@ -1,14 +1,31 @@
 import { useEffect, useState } from "react";
-import { Box, Stack, Select, useRadioGroup } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Stack,
+  Select,
+  Button,
+  useRadioGroup,
+  useToast,
+} from "@chakra-ui/react";
 import RadioCard from "./radioCard";
 
 import { gustosDeHelado } from "../gustosDeHelado";
 
 export default function HaceTuPedido() {
+  const toast = useToast();
+  const [selectableOptions, setSelectableOptions] = useState(gustosDeHelado);
+  const [selectedOptions, setSelectedOptions] = useState([
+    "Chocolate",
+    "Chocolate con almendras",
+    "Chocolate suizo",
+    "Chocolate blanco",
+  ]); //TODO cambiar
+  const [cart, setCart] = useState([]);
   const [pote, setPote] = useState("");
+  const poteOptions = ["1/2", "1", "1+1/2", "2"];
   const [flavourQuantity, setFlavourQuantity] = useState("");
   const [flavourQuantityArray, setFlavourQuantityArray] = useState([]);
-  const poteOptions = ["1/2", "1", "1+1/2", "2"];
   const flavourQuantityOptions = ["1", "2", "3", "4"];
   const { getRootProps: getRootPoteProps, getRadioProps: getRadioPoteProps } =
     useRadioGroup({ onChange: setPote });
@@ -24,8 +41,41 @@ export default function HaceTuPedido() {
     setFlavourQuantityArray(Array(Number(flavourQuantity)).fill("i"));
   }, [flavourQuantity]);
 
+  useEffect(() => {
+    console.log(selectedOptions);
+    console.log(cart);
+  }, [selectedOptions, cart]);
+
+  function handleSelectedOption(e, i) {
+    const newSelectedOptions = selectedOptions;
+    newSelectedOptions[i] = e.target.value;
+    console.log(newSelectedOptions);
+    setSelectedOptions(newSelectedOptions);
+
+    // const newSelectableOptions = selectableOptions.filter(s=>s!=e.target.value);
+    // setSelectableOptions(newSelectableOptions);
+  }
+
+  function addToCart() {
+    const newCartItem = { kilos: pote, gustos: selectedOptions };
+    setCart([...cart, newCartItem]);
+  }
+
   return (
-    <Box marginBlock={12}>
+    <Stack
+      spacing={8}
+      justifyContent="center"
+      margin={{ base: 4, sm: 8 }}
+      color="black"
+    >
+      <Heading color="secondary">Hace tu Pedido</Heading>
+      <Box textAlign="center" textTransform="uppercase" color="fourth">
+        <Heading marginBlock={4}>¡compra ya!</Heading>
+        <Heading d="inline">kilo de helado a </Heading>
+        <Heading d="inline" fontWeight="extrabold" color="secondary">
+          $600
+        </Heading>
+      </Box>
       <Stack
         justify="center"
         alignItems="center"
@@ -62,25 +112,38 @@ export default function HaceTuPedido() {
                     <Select
                       key={index}
                       variant="outline"
-                      defaultValue="chocolate"
                       isRequired
                       boxShadow="md"
+                      defaultValue={selectedOptions[index]}
+                      onChange={(e) => handleSelectedOption(e, index)}
                     >
-                      {gustosDeHelado.map((value, index) => {
-                        return (
-                          <option key={index} value={value}>
-                            {value}
-                          </option>
-                        );
-                      })}
+                      {selectableOptions
+                        // .filter((gusto) => !selectedOptions.includes(gusto))
+                        // .concat(selectedOptions[index])
+                        .map((value, index) => {
+                          return (
+                            <option key={index} value={value}>
+                              {value}
+                            </option>
+                          );
+                        })}
                     </Select>
                   );
                 })}
               </Stack>
             )}
           </Box>
+          <Button
+            boxShadow="md"
+            _hover={{ opacity: "0.7" }}
+            bgColor="fourth"
+            color="white"
+            onClick={() => addToCart()}
+          >
+            Añadir al carrito
+          </Button>
         </Stack>
       </Stack>
-    </Box>
+    </Stack>
   );
 }

@@ -127,7 +127,8 @@ export default function Contacto() {
                     onChange={handleContactChange}
                     placeholder="Nombre y Apellido"
                     borderColor="primary"
-                    borderRadius="sm"
+                    borderRadius="md"
+                    boxShadow="md"
                     _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
@@ -139,7 +140,8 @@ export default function Contacto() {
                     onChange={handleContactChange}
                     placeholder="Email"
                     borderColor="primary"
-                    borderRadius="sm"
+                    borderRadius="md"
+                    boxShadow="md"
                     _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
@@ -152,7 +154,8 @@ export default function Contacto() {
                     onChange={handleContactChange}
                     placeholder="Telefono"
                     borderColor="primary"
-                    borderRadius="sm"
+                    borderRadius="md"
+                    boxShadow="md"
                     _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
@@ -163,7 +166,8 @@ export default function Contacto() {
                     onChange={handleContactChange}
                     placeholder="Asunto"
                     borderColor="primary"
-                    borderRadius="sm"
+                    borderRadius="md"
+                    boxShadow="md"
                     _hover={{ borderColor: "secondary" }}
                   ></Input>
                 </FormControl>
@@ -174,7 +178,8 @@ export default function Contacto() {
                     onChange={handleContactChange}
                     placeholder="Mensaje"
                     borderColor="primary"
-                    borderRadius="sm"
+                    borderRadius="md"
+                    boxShadow="md"
                     rows="4"
                     resize="none"
                     _hover={{ borderColor: "secondary" }}
@@ -193,7 +198,8 @@ export default function Contacto() {
                   type="submit"
                   bgColor="fourth"
                   color="white"
-                  borderRadius="sm"
+                  borderRadius="md"
+                  boxShadow="md"
                   w="100%"
                   _hover={{ bgColor: "fifth" }}
                 >

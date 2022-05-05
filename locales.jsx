@@ -77,7 +77,7 @@ export const locales = [
         calle: "Avenida de Mayo 670",
         horario: "10-18",
         mapsLink:
-          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.814111549868!2d-58.37806648416735!3d-34.6088617652787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccad3b6da7e07%3A0x8e2c90fc2a588e30!2sAv.%20de%20Mayo%20670%2C%20C1084AAO%20CABA!5e0!3m2!1ses!2sar!4v1651616455955!5m2!1ses!2sar",
+          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.313023380285!2d-58.56638348416642!3d-34.64679686728687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc7e638148d17%3A0xc3fa0e047bf16bb!2sAv.%20de%20Mayo%20670%2C%20B1704BUT%20Ramos%20Mej%C3%ADa%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1651765401525!5m2!1ses!2sar",
       },
     ],
   },
