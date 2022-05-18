@@ -15,13 +15,10 @@ import { gustosDeHelado } from "../gustosDeHelado";
 export default function HaceTuPedido() {
   const toast = useToast();
   const [selectableOptions, setSelectableOptions] = useState(gustosDeHelado);
-  const [selectedOptions, setSelectedOptions] = useState([
-    "Chocolate",
-    "Chocolate con almendras",
-    "Chocolate suizo",
-    "Chocolate blanco",
-  ]); //TODO cambiar
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [cart, setCart] = useState([]);
+
+  //Radio cards
   const [pote, setPote] = useState("");
   const poteOptions = ["1/2", "1", "1+1/2", "2"];
   const [flavourQuantity, setFlavourQuantity] = useState("");
@@ -33,24 +30,41 @@ export default function HaceTuPedido() {
     getRootProps: getRootFlavourProps,
     getRadioProps: getRadioFlavourQuantityProps,
   } = useRadioGroup({ onChange: setFlavourQuantity });
-
   const poteGroup = getRootPoteProps();
   const flavourQuantityGroup = getRootFlavourProps();
+  //
 
   useEffect(() => {
     setFlavourQuantityArray(Array(Number(flavourQuantity)).fill("i"));
+
+    let newSelectableOptions = gustosDeHelado.filter(
+      (gusto) => !selectedOptions.includes(gusto)
+    );
+    setSelectableOptions(newSelectableOptions);
+
+    let newSelectedOptions = selectedOptions
+      .concat(newSelectableOptions)
+      .slice(0, flavourQuantity);
+    setSelectedOptions(newSelectedOptions);
   }, [flavourQuantity]);
 
   useEffect(() => {
-    console.log(selectedOptions);
-    console.log(cart);
-  }, [selectedOptions, cart]);
+    console.log("useEffect", selectedOptions);
+    // console.log(selectableOptions);
+    // console.log(cart);
+  }, [selectedOptions]);
 
   function handleSelectedOption(e, i) {
-    const newSelectedOptions = selectedOptions;
-    newSelectedOptions[i] = e.target.value;
+    let newSelectedOptions = selectedOptions;
+    // .map((value, index) => {
+    //   console.log(value);
+    //   // if (index === i) {
+    //   //   value = e.target.value;
+    //   // }
+    // });
+    // newSelectedOptions[i] = e.target.value;
     console.log(newSelectedOptions);
-    setSelectedOptions(newSelectedOptions);
+    setSelectedOptions([...newSelectedOptions,""]);
 
     // const newSelectableOptions = selectableOptions.filter(s=>s!=e.target.value);
     // setSelectableOptions(newSelectableOptions);
@@ -109,25 +123,26 @@ export default function HaceTuPedido() {
               <Stack spacing={3}>
                 {flavourQuantityArray.map((value, index) => {
                   return (
-                    <Select
-                      key={index}
-                      variant="outline"
-                      isRequired
-                      boxShadow="md"
-                      defaultValue={selectedOptions[index]}
-                      onChange={(e) => handleSelectedOption(e, index)}
-                    >
-                      {selectableOptions
-                        // .filter((gusto) => !selectedOptions.includes(gusto))
-                        // .concat(selectedOptions[index])
-                        .map((value, index) => {
+                    <Box key={index}>
+                      <Box>
+                        {selectedOptions[index]} {index}
+                      </Box>
+                      <Select
+                        variant="outline"
+                        isRequired
+                        boxShadow="md"
+                        value={selectedOptions[index]}
+                        onChange={(e) => handleSelectedOption(e, index)}
+                      >
+                        {selectableOptions.map((value, index) => {
                           return (
                             <option key={index} value={value}>
                               {value}
                             </option>
                           );
                         })}
-                    </Select>
+                      </Select>
+                    </Box>
                   );
                 })}
               </Stack>

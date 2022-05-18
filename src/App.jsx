@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Flex minH="100vh" direction="column">
         <Navbar />
-        <Routes>
+        <Routes >
           <Route path="/" exact element={<HaceTuPedido />} />
           <Route path="/puntosDeVenta" exact element={<PuntosDeVenta />} />
           <Route path="/conocenos" exact element={<Conocenos />} />
